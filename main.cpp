@@ -1,3 +1,6 @@
+// COMSC-210 | Lab 12 | Amrutha Sriprasana
+// Made w/ VSCode
+
 #include <iostream>
 #include <algorithm>
 #include <fstream>
@@ -6,9 +9,14 @@
 
 using namespace std;
 
+// roster size
 const int SIZE = 30;
 
-// made function to demonstrate find member func, since it is used multiple times
+/*
+made function to demonstrate find member func, since it is used multiple times,
+checks for student postion based on target given + outputs,
+says student not found if it is out of bounds
+*/
 void find_student(array<string, SIZE> ro, string target){
     array<string, SIZE>::iterator it;
     it = find(ro.begin(), ro.end(), target);
@@ -20,10 +28,11 @@ void find_student(array<string, SIZE> ro, string target){
     }
 }
 
-// Have array of student names for a class roster
+// Have array of student names for a class roster, manipulated in main
 int main() {
     array <string, SIZE> roster;
 
+    // inputting names from class_roster.txt into array roster
     ifstream names;
     names.open("class_roster.txt");
     if (names.good()){
@@ -57,6 +66,10 @@ int main() {
     // finds specific students given by name
     find_student(roster, "Ray");
     find_student(roster, "Chase");
+
+    // finds specific students based on position in array
+    cout << "Student at position 5: " << roster.at(5) << endl;
+    cout << "Student at position 18: " << roster.at(18) << endl;
 
     return 0;
 }
